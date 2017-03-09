@@ -1,0 +1,51 @@
+swagger: '2.0'
+info:
+  title: springbootdemo API
+  description: Yeah!
+  version: "1.0.0"
+# the domain of the service
+host: localhost
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /v1
+produces:
+  - application/json
+paths:
+  /health:
+    get:
+      operationId: health
+      summary: System Health
+      description: |
+        Returns the system health.
+      tags:
+        - Health
+      responses:
+        200:
+          description: A Health object
+          schema:
+            $ref: '#/definitions/Health'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Health:
+    type: object
+    properties:
+      status:
+        type: string
+      age:
+        type: integer
+        format: int32
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
