@@ -16,7 +16,7 @@ produces:
 paths:
   /health:
     get:
-      operationId: health
+      operationId: getHealth
       summary: System Health
       description: |
         Returns the system health.
@@ -29,6 +29,29 @@ paths:
             $ref: '#/definitions/Health'
         default:
           description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    put:
+      operationId: putHealth
+      tags:
+        - Health
+      produces:
+        - text/plain
+      parameters:
+        - name: phoey
+          in: query
+          type: string
+          default: foobar
+          enum:
+            - foobar
+            - foobat
+            - barbaz
+          required: false
+      responses:
+        201:
+          description: Null response
+        default:
+          description: unexpected error
           schema:
             $ref: '#/definitions/Error'
 definitions:

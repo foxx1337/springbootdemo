@@ -7,8 +7,14 @@ import javax.ws.rs.core.Response;
 
 
 public class HealthResource extends HealthApi {
+
     @Override
-    public Response health() {
+    public Response getHealth() {
         return Response.ok(new Health().status("ok").age(0)).build();
+    }
+
+    @Override
+    public Response putHealth(String phoey) {
+        return Response.status(Response.Status.CREATED).entity("just got " + phoey + " as arg").build();
     }
 }

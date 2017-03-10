@@ -10,6 +10,10 @@ import javax.ws.rs.ApplicationPath;
 @ApplicationPath("/v1")
 public class JerseyConfig extends ResourceConfig {
     public JerseyConfig() {
+        registerEndpoints();
+    }
+
+    private void registerEndpoints() {
         register(HealthResource.class);
         register(NotFoundExceptionHandler.class);
     }
