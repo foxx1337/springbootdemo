@@ -7,9 +7,10 @@ import tv.lastpixel.resources.HealthResource;
 import javax.ws.rs.ApplicationPath;
 
 @Configuration
-@ApplicationPath("/api")
+@ApplicationPath("/v1")
 public class JerseyConfig extends ResourceConfig {
     public JerseyConfig() {
         register(HealthResource.class);
+        register(NotFoundExceptionHandler.class);
     }
 }
